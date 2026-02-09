@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外呼系统网址汇总</title>
+    
+    <!-- 使用相对路径（推荐） -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- 如果有PNG版本 -->
+    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- 备选：绝对路径 -->
+    <!-- <link rel="icon" href="/km/favicon.ico" type="image/x-icon"> -->
+    
+    <!-- 备选：带版本号防止缓存 -->
+    <!-- <link rel="icon" href="favicon.ico?v=2" type="image/x-icon"> -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .top-right-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .top-right-buttons .btn-download {
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .top-right-buttons .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+        
+        .top-right-buttons .btn-identifier {
+            background: linear-gradient(90deg, #36D1DC, #5B86E5);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .top-right-buttons .btn-identifier:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+        
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .system-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .system-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .system-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .system-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .system-desc {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            min-height: 60px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-copy {
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+        }
+        
+        .btn-open {
+            background: linear-gradient(90deg, #2196F3, #21b0f3);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .timestamp {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .timestamp-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .copy-notification.show {
+            transform: translateX(0);
+        }
+        
+        .system-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .top-right-buttons {
+                position: relative;
+                top: 0;
+                right: 0;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .top-right-buttons .btn-download,
+            .top-right-buttons .btn-identifier {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+            
+            .systems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 右上角按钮区域 -->
+    <div class="top-right-buttons">
+        <a href="https://admin2023.obs.cn-fz1.ctyun.cn/yunshu/app/windows/2.8.9.50/YunMai%202.8.9.50.exe" 
+           class="btn-download" download="YunMai_2.8.9.50_HNDX-BGW.exe">
+            ⬇️ 云脉下载
+        </a>
+        <button class="btn-identifier" onclick="copyIdentifierToClipboard()">
+            📋 企业标识: HNDX-BGW
+        </button>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>KM外呼系统网址汇总</h1>
+            <p>一站式访问所有业务系统，提高工作效率</p>
+        </div>
+        
+        <div class="timestamp">
+            <div class="timestamp-box">
+                最后更新：<span id="currentDate"></span>
+            </div>
+        </div>
+        
+        <div class="systems-grid">
+            <!-- 老外呼系统 -->
+            <div class="system-card">
+                <span class="system-type">外呼系统</span>
+                <div class="system-icon">📞</div>
+                <h3 class="system-name">老外呼系统</h3>
+                <p class="system-desc">传统外呼操作界面，功能稳定，适合常规外呼任务处理</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="http://222.246.135.224:9080/yc-portal/workbench/index.html?v=2.2.1">
+                        📋 复制链接
+                    </button>
+                    <a href="http://222.246.135.224:9080/yc-portal/workbench/index.html?v=2.2.1" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 新外呼系统（扫码） -->
+            <div class="system-card">
+                <span class="system-type">外呼系统</span>
+                <div class="system-icon">📞</div>
+                <h3 class="system-name">新外呼系统（扫码）</h3>
+                <p class="system-desc">新版扫码登录外呼系统，界面更友好，功能更强大</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="https://web.oauth.tyrzzx.eda.it.hnx.ctc.com:15099/index.html?client_id=TYRZ_WHPT&client_secret=TYRZ_WHPT&redirect_uri=https://134.188.232.250:30429/index">
+                        📋 复制链接
+                    </button>
+                    <a href="https://web.oauth.tyrzzx.eda.it.hnx.ctc.com:15099/index.html?client_id=TYRZ_WHPT&client_secret=TYRZ_WHPT&redirect_uri=https://134.188.232.250:30429/index" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+
+            <!-- 新外呼系统（账密） -->
+            <div class="system-card">
+                <span class="system-type">外呼系统</span>
+                <div class="system-icon">📞</div>
+                <h3 class="system-name">新外呼系统（账密）</h3>
+                <p class="system-desc">新版账号密码登录方式，免扫码快速进入系统</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="https://134.188.232.250:30429/login?fx=debug">
+                        📋 复制链接
+                    </button>
+                    <a href="https://134.188.232.250:30429/login?fx=debug" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 智慧客服 -->
+            <div class="system-card">
+                <span class="system-type">门户系统</span>
+                <div class="system-icon">🏠</div>
+                <h3 class="system-name">智慧客服（门户）</h3>
+                <p class="system-desc">综合客服门户系统，集成多种客服功能与数据展示</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="http://134.178.192.11:12444/dist/main/index?isMain=3">
+                        📋 复制链接
+                    </button>
+                    <a href="http://134.178.192.11:12444/dist/main/index?isMain=3" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+            
+            <!-- BPS系统8080 -->
+            <div class="system-card">
+                <span class="system-type">业务流程</span>
+                <div class="system-icon">🔄</div>
+                <h3 class="system-name">BPS系统8080（代课）</h3>
+                <p class="system-desc">业务流程管理系统，用于代课业务处理与订单管理</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="https://web.oauth.tyrzzx.eda.it.hnx.ctc.com:15099/index.html?client_id=TYRZ_BPS&client_secret=TYRZ_BPS&redirect_uri=https://134.176.22.204:8080/progrom/start/index.html#/">
+                        📋 复制链接
+                    </button>
+                    <a href="https://web.oauth.tyrzzx.eda.it.hnx.ctc.com:15099/index.html?client_id=TYRZ_BPS&client_secret=TYRZ_BPS&redirect_uri=https://134.176.22.204:8080/progrom/start/index.html#/" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+
+            <!-- BPS系统8007 -->
+            <div class="system-card">
+                <span class="system-type">业务流程</span>
+                <div class="system-icon">🔄</div>
+                <h3 class="system-name">BPS系统8007（代课）</h3>
+                <p class="system-desc">备用的BPS系统端口，功能与8080端口相同</p>
+                <div class="btn-group">
+                    <button class="btn btn-copy" data-url="http://134.176.22.204:8007/static/progrom/start/index.html#/ordercenter/dailishang">
+                        📋 复制链接
+                    </button>
+                    <a href="http://134.176.22.204:8007/static/progrom/start/index.html#/ordercenter/dailishang" 
+                       class="btn btn-open" target="_blank">
+                        🔗 立即访问
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 外呼系统网址汇总 | 建议收藏此页面以便快速访问</p>
+            <p>提示：点击"立即访问"按钮将在新标签页打开系统，点击"复制链接"可复制网址到剪贴板</p>
+        </div>
+    </div>
+    
+    <div class="copy-notification" id="copyNotification">
+        ✅ 链接已复制到剪贴板！
+    </div>
+    
+    <script>
+        // 显示当前日期
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDate').textContent = 
+                now.toLocaleDateString('zh-CN', options);
+        }
+        
+        // 复制到剪贴板功能
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('✅ 链接已复制到剪贴板！');
+            }).catch(err => {
+                console.error('复制失败:', err);
+                // 备用方法
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('✅ 链接已复制到剪贴板！');
+            });
+        }
+        
+        // 复制企业标识到剪贴板
+        function copyIdentifierToClipboard() {
+            const identifier = 'HNDX-BGW';
+            navigator.clipboard.writeText(identifier).then(() => {
+                showNotification('✅ 企业标识 "HNDX-BGW" 已复制到剪贴板！');
+            }).catch(err => {
+                console.error('复制失败:', err);
+                // 备用方法
+                const textArea = document.createElement('textarea');
+                textArea.value = identifier;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('✅ 企业标识 "HNDX-BGW" 已复制到剪贴板！');
+            });
+        }
+        
+        // 显示复制成功提示
+        function showNotification(message) {
+            const notification = document.getElementById('copyNotification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCurrentDate();
+            
+            // 为所有复制按钮添加点击事件
+            const copyButtons = document.querySelectorAll('.btn-copy');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    if (url) {
+                        copyToClipboard(url);
+                    }
+                });
+            });
+            
+            // 为所有系统卡片添加点击效果
+            const cards = document.querySelectorAll('.system-card');
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('btn') && 
+                        !e.target.closest('.btn')) {
+                        card.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            card.style.transform = '';
+                        }, 200);
+                    }
+                });
+            });
+            
+            // 添加键盘快捷键支持
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'c') {
+                    e.preventDefault();
+                    const focused = document.activeElement;
+                    if (focused.classList.contains('btn-copy')) {
+                        const url = focused.getAttribute('data-url');
+                        if (url) copyToClipboard(url);
+                    }
+                }
+            });
+            
+            // 为云脉下载链接添加点击事件
+            const downloadBtn = document.querySelector('.btn-download');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(e) {
+                    // 如果下载失败，显示提示
+                    setTimeout(() => {
+                        showNotification('💡 如果下载没有开始，请右键链接选择"另存为"或使用下载工具');
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
